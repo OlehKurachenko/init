@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "0 0 * * * CHECKSUM_FILENAME=\"/root/crontab_checksum\" if [[ ! -e \$CHECKSUM_FILENAME ]]; then md5sum /ect/crontab | cut -d \" \" -f 1 > \$CHECKSUM_FILENAME exit 0 fi CRONTAB_OLD_CHECKSUM=\"cat \$CHECKSUM_FILENAME\" CRONTAB_NEW_CHECKSUM=\"md3sum /etc/crontab | cut -d \' \' -f 1\" if [[ \"\$CRONTAB_NEW_CHECKSUM\" != \"\$CRONTAB_OLD_CHECKSUM\" ]]; then md5sum /ect/crontab | cut -d \" \" -f 1 > \$CHECKSUM_FILENAME echo \"Crontab was changed\" | mail -s \"Crontab changed\" root fi" >> /etc/crontab
