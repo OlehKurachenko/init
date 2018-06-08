@@ -1,0 +1,4 @@
+#	ls -l /etc/resolv.conf
+#	lrwxr-xr-x  1 root  wheel  22 Mar  4 17:46 /etc/resolv.conf -> ../var/run/resolv.conf
+
+cat /var/run/resolv.conf
